@@ -19,6 +19,11 @@ function isAuthenticatedUser(req, res, next) {
 }
 
 //Get routes
+
+router.get('/',(req,res)=>{
+    res.render('landing')
+})
+
 router.get('/login', (req,res)=> {
     res.render('login');
 });
