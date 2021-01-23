@@ -1,0 +1,14 @@
+<%- include('partials/header') -%>
+<div class="container mt-5 w-50">
+
+    <h2 class="mb-4">Add New Tweet</h2>
+
+    <form action="/tweets" method="post" class="needs-validation">
+        
+        <textarea name="input" class="form-control" rows="3"><%= tweet.input %></textarea>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Tweet</button>
+
+    </form>
+</div>
+<%- include('partials/footer') -%>

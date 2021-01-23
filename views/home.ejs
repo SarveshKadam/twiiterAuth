@@ -1,0 +1,39 @@
+<%- include('partials/header') -%>
+<div class="container w-25 mt-2">
+    <%- include('partials/messages') -%>
+    <h1 class="text-center">Tweet List</h1>
+    <div class="container mt-5">
+        <%- include('partials/messages') -%>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Tweet</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% tweets.forEach( tweet => { %>
+                        <tr>
+                            <td><%= tweet.input %></td>
+                            <td>
+                                <a class=<%= currentUser.role === "superadmin" ? "btn btn-primary" : "btn btn-primary disabled" %> href="/tweets/<%= tweet.id %>"
+                                    aria-disabled=<%= currentUser.role === "superadmin" ? "false" : "true" %>
+                                    >
+                                    Edit</a>
+                                <form style="display: inline;" action="/tweets/<%= tweet.id %>?_method=DELETE" method="POST">
+                                    <button <%= currentUser.role === "superadmin" ? "" : "disabled" %>  style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                                </form>
+                                <% if(currentUser.role === "admin"){ %> 
+                                    <form style="display: inline;" action="/tweets/<%= tweet.id %>" method="POST">
+                                    <button class="btn btn-primary ml-2 mt-2">Request Modification</button>
+                                    </form>
+                                    <% } %> 
+                            </td>
+                        </tr>
+                   <% }) %>
+                    
+    
+                </tbody>
+            </table>
+        </div>
+</div>
+<%- include('partials/footer') -%>

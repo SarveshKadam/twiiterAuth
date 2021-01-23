@@ -1,0 +1,15 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5 w-50">
+
+    <h2 class="mb-4">Update Tweet Data</h2>
+
+    <form action="/tweets/<%= tweet.id %>?_method=PUT" method="POST" class="needs-validation" >        
+        <textarea name="input" class="form-control" rows="3"><%= tweet.input %></textarea>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Update Tweet</button>
+
+    </form>
+</div>
+
+<%- include('partials/footer') -%>
